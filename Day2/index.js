@@ -2,6 +2,8 @@ const fs = require('fs')
 const data = fs.readFileSync('Day2/data', 'utf8')
 const lines = data.split(/\n/)
 
+const start = performance.now()
+
 let score = 0
 for(let line of lines) {
   switch(line[2]) {
@@ -23,7 +25,8 @@ for(let line of lines) {
   }
 }
 
-console.log('Part 1: ', score)
+console.log('Part 1: ', score, ' Elapsed: ', performance.now() - start)
+const start2 = performance.now()
 
 score = 0
 for(let line of lines) {
@@ -48,4 +51,4 @@ for(let line of lines) {
   }
 }
 
-console.log('Part 2: ', score)
+console.log('Part 2: ', score, ' Elapsed: ', performance.now() - start2)
