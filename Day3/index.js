@@ -2,8 +2,13 @@ const fs = require('fs')
 const data = fs.readFileSync('Day3/data', 'utf8')
 const lines = data.split(/\n/)
 
-let start = performance.now()
-const elapsedPerf = started => 'Elapsed: ' + ((performance.now() - started) * 1000).toFixed(3) + 'µs'
+const printSolution = (work1, work2) => {
+  let start = performance.now()
+  console.log(`Part 1: ${work1()} Elapsed: ${((performance.now() - start) * 1000).toFixed(3)}µs`)
+  start = performance.now()
+  console.log(`Part 2: ${work2()} Elapsed: ${((performance.now() - start) * 1000).toFixed(3)}µs`)
+}
+
 const leftRucksacks = [], rightRucksacks = []
 
 const split = string => [string.slice(0, string.length / 2), string.slice(string.length / 2)]
@@ -27,9 +32,6 @@ const findAllDupes = (str1, str2) => {
 
 const solvePart1 = () => convertString(findAllDupes(leftRucksacks, rightRucksacks))
 
-console.log('Part 1: ', solvePart1(), elapsedPerf(start) )
-
-start = performance.now()
 const firstRucksacks = [], secondRucksacks = [], thirdRucksacks = []
 
 for(let i = 0; i < lines.length; i += 3) {
@@ -52,4 +54,4 @@ const findAllTripDupes = (str1, str2, str3) => {
 
 const solvePart2 = () => convertString(findAllTripDupes(firstRucksacks, secondRucksacks, thirdRucksacks))
 
-console.log('Part 2: ', solvePart2(), elapsedPerf(start) )
+printSolution(solvePart1, solvePart2)
