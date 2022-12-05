@@ -17,13 +17,11 @@ for(let i = 0; i < lines.length; i++) {
 }
 
 const checkValues = (first, second, third, fourth) => {
-  // console.log((first <= third && second >= fourth) || (third <= first && fourth >= second))
   if((first <= third && second >= fourth) || (third <= first && fourth >= second)) return true
 }
 
 const checkValuesOverlap = (first, second, third, fourth) => {
-  // console.log((first <= third && second >= fourth) || (third <= first && fourth >= second))
-  if((first <= third || second >= fourth) && (third <= first || fourth >= second)) return true
+  if((first <= third && third <= second) || (third <= first && first <= fourth)) return true
 }
 
 const solveFirst = (first, second, third, fourth) => {
@@ -42,5 +40,4 @@ const solveSecond = (first, second, third, fourth) => {
   return count
 }
 
-console.log(solveFirst(elfOneStart, elfOneEnd, elfTwoStart, elfTwoEnd))
-console.log(solveSecond(elfOneStart, elfOneEnd, elfTwoStart, elfTwoEnd))
+printSolution(() => solveFirst(elfOneStart, elfOneEnd, elfTwoStart, elfTwoEnd), () => solveSecond(elfOneStart, elfOneEnd, elfTwoStart, elfTwoEnd))
